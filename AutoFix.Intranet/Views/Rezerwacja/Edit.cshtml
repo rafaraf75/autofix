@@ -1,0 +1,49 @@
+﻿@model AutoFix.Data.Data.Garaz.Rezerwacja
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Rezerwacja</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdRezerwacji" />
+            <div class="form-group">
+                <label asp-for="DataRezerwacji" class="control-label"></label>
+                <input asp-for="DataRezerwacji" class="form-control" />
+                <span asp-validation-for="DataRezerwacji" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usluga" class="control-label"></label>
+                <input asp-for="Usluga" class="form-control" />
+                <span asp-validation-for="Usluga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uwagi" class="control-label"></label>
+                <input asp-for="Uwagi" class="form-control" />
+                <span asp-validation-for="Uwagi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdKlienta" class="control-label"></label>
+                <select asp-for="IdKlienta" class="form-control" asp-items="ViewBag.IdKlienta"></select>
+                <span asp-validation-for="IdKlienta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

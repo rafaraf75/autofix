@@ -1,0 +1,29 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AutoFix.Data.Data.Garaz
+{
+    public class Rezerwacja
+    {
+        [Key]
+        public int IdRezerwacji { get; set; }
+
+        [Required(ErrorMessage = "Data rezerwacji jest wymagana")]
+        [Display(Name = "Data rezerwacji")]
+        public DateTime DataRezerwacji { get; set; } = DateTime.Now;
+
+        [Display(Name = "Usługa (opis)")]
+        [Column(TypeName = "nvarchar(MAX)")]
+        public string Usluga { get; set; } = string.Empty;
+
+        [Display(Name = "Uwagi")]
+        public string Uwagi { get; set; } = string.Empty;
+
+        // Relacja: Rezerwacja przypisana do Klienta
+        [ForeignKey("Klient")]
+        [Display(Name = "Klient")]
+        public int IdKlienta { get; set; }
+        public Klient? Klient { get; set; }
+    }
+}

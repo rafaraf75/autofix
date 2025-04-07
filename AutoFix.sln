@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFix.PortalWWW", "AutoFix.PortalWWW\AutoFix.PortalWWW.csproj", "{D1DC76E3-0BBB-4CB2-A547-6B9B501AF69D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFix.Intranet", "AutoFix.Intranet\AutoFix.Intranet.csproj", "{C4A4DCC9-6F46-41C7-B1CC-211A42538CD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoFix.Data", "AutoFix.Data\AutoFix.Data.csproj", "{EFB34D4F-F848-4932-9259-CD36D5825D1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1DC76E3-0BBB-4CB2-A547-6B9B501AF69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DC76E3-0BBB-4CB2-A547-6B9B501AF69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DC76E3-0BBB-4CB2-A547-6B9B501AF69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DC76E3-0BBB-4CB2-A547-6B9B501AF69D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A4DCC9-6F46-41C7-B1CC-211A42538CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A4DCC9-6F46-41C7-B1CC-211A42538CD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A4DCC9-6F46-41C7-B1CC-211A42538CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A4DCC9-6F46-41C7-B1CC-211A42538CD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB34D4F-F848-4932-9259-CD36D5825D1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB34D4F-F848-4932-9259-CD36D5825D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB34D4F-F848-4932-9259-CD36D5825D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB34D4F-F848-4932-9259-CD36D5825D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

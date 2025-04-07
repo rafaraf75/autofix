@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AutoFix.Data.Data.Garaz.AutoZastepcze>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataOd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Koszt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naprawa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataOd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Koszt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naprawa.Opis)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAutoZastepczego">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAutoZastepczego">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAutoZastepczego">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
