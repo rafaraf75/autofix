@@ -1,0 +1,85 @@
+﻿@model AutoFix.Models.ViewModels.NowaRezerwacjaVM
+
+@{
+    ViewData["Title"] = "Nowa rezerwacja";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4"><i class="bi bi-tools me-2"></i>Umów wizytę</h2>
+
+<form asp-action="Create" method="post" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label asp-for="NrRejestracyjny" class="form-label"></label>
+        <input asp-for="NrRejestracyjny" class="form-control shadow-sm" />
+        <span asp-validation-for="NrRejestracyjny" class="text-danger"></span>
+    </div>
+    <input asp-for="Silnik" type="hidden" id="Silnik" />
+    <div class="mb-3">
+        <label asp-for="DataRezerwacji" class="form-label"></label>
+        <input asp-for="DataRezerwacji" type="date" class="form-control shadow-sm" />
+        <span asp-validation-for="DataRezerwacji" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Usluga" class="form-label"></label>
+        <textarea asp-for="Usluga" class="form-control shadow-sm"></textarea>
+        <span asp-validation-for="Usluga" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Uwagi" class="form-label"></label>
+        <textarea asp-for="Uwagi" class="form-control shadow-sm"></textarea>
+        <span asp-validation-for="Uwagi" class="text-danger"></span>
+    </div>
+    <!-- DYNAMICZNY BLOK Z DANYMI KLIENTA -->
+    <div class="mt-3" id="infoKlient" style="display:none;">
+        <div class="alert alert-info">
+            <strong>Dane klienta:</strong><br />
+            <span id="klientImieNazwisko"></span><br />
+            <strong>Pojazd:</strong> <span id="pojazdMarkaModel"></span><br />
+            <strong>Silnik:</strong> <span id="pojazdSilnik"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zapisz rezerwację</button>
+</form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        const inputNr = document.querySelector('#NrRejestracyjny');
+        const infoDiv = document.querySelector('#infoKlient');
+        const spanDane = document.querySelector('#klientImieNazwisko');
+
+        inputNr.addEventListener('change', () => {
+            const nr = inputNr.value;
+
+            if (nr.length < 2) {
+                infoDiv.style.display = 'none';
+                spanDane.innerText = '';
+                return;
+            }
+
+            fetch(`/Rezerwacja/SzukajPojazdPoRejestracji?nr=${encodeURIComponent(nr)}`)
+                .then(res => {
+                    if (!res.ok) throw new Error("Nie znaleziono pojazdu");
+                    return res.json();
+                })
+                .then(data => {
+                    spanDane.innerText = `${data.klient.imie} ${data.klient.nazwisko}`;
+                    document.querySelector("#pojazdSilnik").innerText = data.pojazd.silnik;
+                    document.querySelector("#pojazdMarkaModel").innerText = `${data.pojazd.marka} ${data.pojazd.model}`;
+                    document.querySelector("#Silnik").value = data.pojazd.silnik;
+                    infoDiv.style.display = 'block';
+                })
+                .catch(err => {
+                    spanDane.innerText = '';
+                    infoDiv.style.display = 'none';
+                    console.log(err.message);
+                });
+        });
+    </script>
+}

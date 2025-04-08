@@ -34,11 +34,17 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NrRejestracyjny)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Silnik)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Silnik)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Klient)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Klient.Email)
+            @(Model.Klient?.Email ?? "brak danych")
         </dd>
     </dl>
 </div>

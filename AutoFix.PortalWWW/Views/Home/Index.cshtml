@@ -1,13 +1,101 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona główna";
 }
 
-<h1>Welcome to AutoFix.PortalWWW</h1>
-<p>
-    Lorem Ipsum jest tekstem stosowanym jako przykładowy
-    wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w.
-    przez nieznanego drukarza do wypełnienia tekstem próbnej książki.
-    Pięć wieków później zaczął być używany przemyśle elektronicznym,
-    pozostając praktycznie niezmienionym. Spopularyzował się w latach 60.
-    XX w. wraz z publikacją arkuszy
-</p>
+<!-- HERO SECTION -->
+<section class="bg-primary text-white text-center py-5 mb-4">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Witamy w AutoFix</h1>
+        <p class="lead">Zadbamy o Twój samochód jak nikt inny.</p>
+        <a href="/Rezerwacja/Create" class="btn btn-light btn-lg mt-3">Umów wizytę</a>
+    </div>
+</section>
+
+<!-- PROMOCJE -->
+<section class="container mb-5">
+    <h2 class="text-center mb-4">Aktualne promocje</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="alert shadow-sm" style="background-color: #e0f0ff;">
+                <i class="bi bi-snow2 me-2"></i><strong>Przegląd klimatyzacji – tylko 50 zł!</strong><br />
+                Skorzystaj przed sezonem upałów.
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="alert shadow-sm" style="background-color: #e0f0ff;">
+                <i class="bi bi-truck-front me-2"></i><strong>Promocja wiosenna:</strong><br />
+                Sprawdzimy 34 punkty Twojego auta – gratis!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="alert shadow-sm" style="background-color: #e0f0ff;">
+                <i class="bi bi-bag-check me-2"></i><strong>Wymiana opon zakupionych u nas – gratis</strong><br />
+                Tylko do końca miesiąca!
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- USŁUGI -->
+<section class="container mb-5">
+    <h2 class="text-center mb-4">Nasze usługi</h2>
+    <div class="row g-4">
+        <!-- Rząd 1 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-wrench-adjustable me-2"></i>Obsługa serwisowa</h5>
+                    <p class="card-text">Regularne przeglądy, wymiany oleju i filtra – dbamy o Twoje auto kompleksowo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-cpu me-2"></i>Diagnostyka komputerowa</h5>
+                    <p class="card-text">Nowoczesne narzędzia do szybkiego wykrywania usterek.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-gear-wide-connected me-2"></i>Wymiana rozrządu</h5>
+                    <p class="card-text">Kompleksowa wymiana rozrządu – szybko, sprawnie i z gwarancją.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rząd 2 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-circle-half me-2"></i>Wulkanizacja</h5>
+                    <p class="card-text">Wymiana opon, wyważanie, serwis sezonowy – w 30 minut.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-exclamation-triangle me-2"></i>Hamulce</h5>
+                    <p class="card-text">Wymiana klocków, tarcz, przegląd układu hamulcowego – dla Twojego bezpieczeństwa.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="bi bi-snow me-2"></i>Klimatyzacja</h5>
+                    <p class="card-text">Serwis i napełnianie klimatyzacji – chłodno i bezpiecznie przez całe lato.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="text-center mb-5">
+    <h4 class="mb-3">Nie czekaj – zarezerwuj termin już teraz!</h4>
+    <a href="/Rezerwacja/Create" class="btn btn-primary btn-lg">Umów wizytę</a>
+</section>

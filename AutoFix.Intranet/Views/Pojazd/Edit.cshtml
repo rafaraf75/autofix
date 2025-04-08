@@ -33,6 +33,13 @@
                 <input asp-for="NrRejestracyjny" class="form-control" />
                 <span asp-validation-for="NrRejestracyjny" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Silnik" class="control-label"></label>
+                <input asp-for="Silnik" class="form-control" />
+                <span asp-validation-for="Silnik" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="IdKlienta" class="control-label"></label>
                 <select asp-for="IdKlienta" class="form-control" asp-items="ViewBag.IdKlienta"></select>

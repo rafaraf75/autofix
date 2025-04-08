@@ -1,13 +1,43 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Polityka prywatności";
 }
-<h1>Polityka prywatności</h1>
 
-<p>
-    Lorem Ipsum jest tekstem stosowanym jako przykładowy
-    wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w.
-    przez nieznanego drukarza do wypełnienia tekstem próbnej książki.
-    Pięć wieków później zaczął być używany przemyśle elektronicznym,
-    pozostając praktycznie niezmienionym. Spopularyzował się w latach 60.
-    XX w. wraz z publikacją arkuszy
-</p>
+<!-- HERO SEKCJA -->
+<section class="bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-5 fw-bold">Polityka prywatności</h1>
+        <p class="lead">Twoje dane są bezpieczne w AutoFix</p>
+    </div>
+</section>
+
+<!-- Treść polityki -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="bg-white p-5 rounded shadow-sm text-start">
+                <h2 class="mb-4"><i class="bi bi-shield-lock me-2"></i>Jak chronimy Twoje dane?</h2>
+                <p>
+                    W AutoFix dbamy o Twoją prywatność. Przetwarzamy dane wyłącznie w celu realizacji usług
+                    i zgodnie z obowiązującym prawem. Twoje dane nigdy nie są przekazywane osobom trzecim
+                    bez Twojej zgody.
+                </p>
+                <p>
+                    Masz pełne prawo do wglądu, poprawiania i żądania usunięcia swoich danych osobowych.
+                    Więcej informacji znajdziesz w naszej pełnej polityce dostępnej na życzenie.
+                </p>
+                <p class="text-muted small mt-4">AutoFix – zaufanie to podstawa.</p>
+            </div>
+
+            <!-- CTA - kontakt -->
+            <div class="bg-light p-5 rounded shadow-sm text-center">
+                <h4 class="mb-3"><i class="bi bi-envelope-question-fill me-2"></i>Masz pytania?</h4>
+                <p>Skontaktuj się z nami lub od razu umów wizytę online.</p>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                    <a href="mailto:kontakt@autofix.pl" class="btn btn-outline-primary btn-lg">Napisz do nas</a>
+                    <a asp-controller="Rezerwacja" asp-action="Create" class="btn btn-primary btn-lg">Umów wizytę</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

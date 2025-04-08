@@ -24,6 +24,9 @@ namespace AutoFix.Data.Data.Garaz
         [MaxLength(20)]
         [Display(Name = "Nr rejestracyjny")]
         public string NrRejestracyjny { get; set; } = string.Empty;
+        [MaxLength(50)]
+        [Display(Name = "Silnik")]
+        public string Silnik { get; set; } = string.Empty;
 
         // Relacja: Pojazd należy do Klienta
         [ForeignKey("Klient")]

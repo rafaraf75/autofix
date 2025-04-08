@@ -12,11 +12,46 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+}
+
+main {
+    flex: 1;
+    background-color: #f8f9fa;
+}
+
+footer {
+    background-color: #212529;
+    color: #fff;
+    text-align: center;
+    padding: 0.75rem;
+    border-top: 2px solid #0d6efd; /* niebieska linia akcentu */
+}
+
+footer.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+.card,
+.alert {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+}
+
+.btn-primary {
+    box-shadow: 0 3px 6px rgba(13, 110, 253, 0.2);
 }

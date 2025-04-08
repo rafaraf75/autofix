@@ -25,5 +25,11 @@ namespace AutoFix.Data.Data.Garaz
         [Display(Name = "Klient")]
         public int IdKlienta { get; set; }
         public Klient? Klient { get; set; }
+
+        [ForeignKey("Pojazd")]
+        [Display(Name = "Pojazd")]
+        public int IdPojazdu { get; set; }
+        public Pojazd? Pojazd { get; set; }
+
     }
 }

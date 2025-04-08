@@ -27,6 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Klient)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Silnik)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -46,7 +49,10 @@
                 @Html.DisplayFor(modelItem => item.NrRejestracyjny)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Klient.Email)
+                @(item.Klient?.Email ?? "brak danych")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Silnik)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdPojazdu">Edit</a> |

@@ -24,5 +24,22 @@ namespace AutoFix.Data
         public DbSet<Rezerwacja> Rezerwacje { get; set; }
         public DbSet<AutoZastepcze> AutaZastepcze { get; set; }
         public DbSet<HistoriaNaprawy> HistorieNapraw { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Rezerwacja>()
+                .HasOne(r => r.Pojazd)
+                .WithMany()
+                .HasForeignKey(r => r.IdPojazdu)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Rezerwacja>()
+                .HasOne(r => r.Klient)
+                .WithMany()
+                .HasForeignKey(r => r.IdKlienta)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

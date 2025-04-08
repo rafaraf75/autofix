@@ -1,0 +1,72 @@
+﻿@model AutoFix.Models.ViewModels.DodajKlientaPojazdVM
+
+@{
+    ViewData["Title"] = "Dodaj klienta i pojazd";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4"><i class="bi bi-file-earmark-text me-2"></i>Dodaj klienta i pojazd</h2>
+
+<form asp-action="DodajKlientaPojazd" method="post" class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Dane klienta</h4>
+            <div class="mb-3">
+                <label asp-for="Imie" class="form-label"></label>
+                <input asp-for="Imie" class="form-control shadow-sm" />
+                <span asp-validation-for="Imie" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Nazwisko" class="form-label"></label>
+                <input asp-for="Nazwisko" class="form-control shadow-sm" />
+                <span asp-validation-for="Nazwisko" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control shadow-sm" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Telefon" class="form-label"></label>
+                <input asp-for="Telefon" class="form-control shadow-sm" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Dane pojazdu</h4>
+            <div class="mb-3">
+                <label asp-for="Marka" class="form-label"></label>
+                <input asp-for="Marka" class="form-control shadow-sm" />
+                <span asp-validation-for="Marka" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Model" class="form-label"></label>
+                <input asp-for="Model" class="form-control shadow-sm" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Rok" class="form-label"></label>
+                <input asp-for="Rok" type="number" class="form-control shadow-sm" />
+                <span asp-validation-for="Rok" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="NrRejestracyjny" class="form-label"></label>
+                <input asp-for="NrRejestracyjny" class="form-control shadow-sm" />
+                <span asp-validation-for="NrRejestracyjny" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Silnik" class="form-label"></label>
+                <input asp-for="Silnik" class="form-control shadow-sm" />
+                <span asp-validation-for="Silnik" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Zapisz</button>
+</form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

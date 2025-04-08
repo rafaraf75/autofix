@@ -1,8 +1,49 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard";
 }
+<h1 class="mb-4">Panel administracyjny AutoFix</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm bg-light h-100">
+            <div class="card-body">
+                <h5 class="card-title">👥 Klienci</h5>
+                <p class="card-text fs-3">132</p>
+                <a asp-controller="Klient" asp-action="Index" class="btn btn-outline-primary btn-sm">Zarządzaj</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm bg-light h-100">
+            <div class="card-body">
+                <h5 class="card-title">🔧 Naprawy</h5>
+                <p class="card-text fs-3">48</p>
+                <a asp-controller="Naprawa" asp-action="Index" class="btn btn-outline-primary btn-sm">Zobacz</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm bg-light h-100">
+            <div class="card-body">
+                <h5 class="card-title">📅 Rezerwacje</h5>
+                <p class="card-text fs-3">17</p>
+                <a asp-controller="Rezerwacja" asp-action="Index" class="btn btn-outline-primary btn-sm">Przejdź</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm bg-light h-100">
+            <div class="card-body">
+                <h5 class="card-title">🧑‍🔧 Mechanicy</h5>
+                <p class="card-text fs-3">6</p>
+                <a asp-controller="Mechanik" asp-action="Index" class="btn btn-outline-primary btn-sm">Lista</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="my-5" />
+
+<div class="alert alert-info shadow-sm">
+    <strong>👋 Witaj!</strong> Z tego miejsca możesz zarządzać całym systemem – dodawać naprawy, aktualizować treści na Portalu oraz monitorować postęp prac.
 </div>

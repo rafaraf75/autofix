@@ -57,7 +57,7 @@ namespace AutoFix.Intranet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdPojazdu,Marka,Model,Rok,NrRejestracyjny,IdKlienta")] Pojazd pojazd)
+        public async Task<IActionResult> Create([Bind("IdPojazdu,Marka,Model,Rok,NrRejestracyjny,Silnik,IdKlienta")] Pojazd pojazd)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace AutoFix.Intranet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPojazdu,Marka,Model,Rok,NrRejestracyjny,IdKlienta")] Pojazd pojazd)
+        public async Task<IActionResult> Edit(int id, [Bind("IdPojazdu,Marka,Model,Rok,NrRejestracyjny,Silnik,IdKlienta")] Pojazd pojazd)
         {
             if (id != pojazd.IdPojazdu)
             {
