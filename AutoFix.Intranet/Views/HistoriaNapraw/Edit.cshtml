@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edytuj</h1>
 
 <h4>HistoriaNaprawy</h4>
 <hr />
@@ -28,15 +28,17 @@
                 <select asp-for="IdNaprawy" class="form-control" asp-items="ViewBag.IdNaprawy"></select>
                 <span asp-validation-for="IdNaprawy" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group d-flex gap-2">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-save"></i> Zapisz
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-left-circle"></i> Powrót
+                </a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

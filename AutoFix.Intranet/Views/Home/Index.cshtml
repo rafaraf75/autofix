@@ -1,49 +1,91 @@
-﻿@{
+﻿@model IEnumerable<AutoFix.Intranet.ViewModels.RezerwacjaDashboardViewModel>
+
+@{
     ViewData["Title"] = "Dashboard";
 }
+
 <h1 class="mb-4">Panel administracyjny AutoFix</h1>
 
-<div class="row g-4">
+<div class="row g-4 mb-5">
     <div class="col-md-3">
-        <div class="card border-0 shadow-sm bg-light h-100">
+        <div class="card border-0 shadow-sm bg-primary bg-opacity-10 h-100">
             <div class="card-body">
-                <h5 class="card-title">👥 Klienci</h5>
-                <p class="card-text fs-3">132</p>
+                <h5 class="card-title"><i class="bi bi-people-fill"></i>   Klienci</h5>
+                <p class="card-text fs-3">@ViewBag.LiczbaKlientow</p>
                 <a asp-controller="Klient" asp-action="Index" class="btn btn-outline-primary btn-sm">Zarządzaj</a>
             </div>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card border-0 shadow-sm bg-light h-100">
+        <div class="card border-0 shadow-sm bg-primary bg-opacity-10 h-100">
             <div class="card-body">
-                <h5 class="card-title">🔧 Naprawy</h5>
-                <p class="card-text fs-3">48</p>
+                <h5 class="card-title"><i class="bi bi-wrench"></i>   Naprawy</h5>
+                <p class="card-text fs-3">@ViewBag.LiczbaNapraw</p>
                 <a asp-controller="Naprawa" asp-action="Index" class="btn btn-outline-primary btn-sm">Zobacz</a>
             </div>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card border-0 shadow-sm bg-light h-100">
+        <div class="card border-0 shadow-sm bg-primary bg-opacity-10 h-100">
             <div class="card-body">
-                <h5 class="card-title">📅 Rezerwacje</h5>
-                <p class="card-text fs-3">17</p>
+                <h5 class="card-title"><i class="bi bi-calendar-event"></i>   Rezerwacje</h5>
+                <p class="card-text fs-3">@ViewBag.LiczbaRezerwacji</p>
                 <a asp-controller="Rezerwacja" asp-action="Index" class="btn btn-outline-primary btn-sm">Przejdź</a>
             </div>
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card border-0 shadow-sm bg-light h-100">
+        <div class="card border-0 shadow-sm bg-primary bg-opacity-10 h-100">
             <div class="card-body">
-                <h5 class="card-title">🧑‍🔧 Mechanicy</h5>
-                <p class="card-text fs-3">6</p>
+                <h5 class="card-title"><i class="bi bi-tools"></i>   Mechanicy</h5>
+                <p class="card-text fs-3">@ViewBag.LiczbaMechanikow</p>
                 <a asp-controller="Mechanik" asp-action="Index" class="btn btn-outline-primary btn-sm">Lista</a>
             </div>
         </div>
     </div>
 </div>
 
-<hr class="my-5" />
+<!-- Komunikaty -->
+@if (TempData["Sukces"] != null)
+{
+    <div class="alert alert-success">@TempData["Sukces"]</div>
+}
+@if (TempData["Blad"] != null)
+{
+    <div class="alert alert-danger">@TempData["Blad"]</div>
+}
 
-<div class="alert alert-info shadow-sm">
-    <strong>👋 Witaj!</strong> Z tego miejsca możesz zarządzać całym systemem – dodawać naprawy, aktualizować treści na Portalu oraz monitorować postęp prac.
-</div>
+<hr class="my-3" />
+
+<h3 class="mb-3">Umówione rezerwacje</h3>
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-primary bg-opacity-10 text-dark fw-semibold">
+        <tr>
+            <th>Data</th>
+            <th>Klient</th>
+            <th>Pojazd</th>
+            <th>Usługa</th>
+            <th>Mechanik</th>
+            <th>Akcja</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model.Where(r => r.MechanikImieNazwisko == "Nieprzypisany"))
+        {
+            <tr>
+                <td>@r.DataRezerwacji.ToString("dd.MM.yyyy")</td>
+                <td>@r.KlientEmail</td>
+                <td>@r.PojazdOpis</td>
+                <td>@r.Usluga</td>
+                <td>@r.MechanikImieNazwisko</td>
+                <td>
+                    <a asp-controller="Rezerwacja" asp-action="Zarzadzaj" asp-route-id="@r.IdRezerwacji"
+                       class="btn btn-sm btn-outline-dark">
+                        <i class="bi bi-gear"></i> Zarządzaj
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

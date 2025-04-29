@@ -1,0 +1,43 @@
+﻿@model AutoFix.Data.Data.CMS.Promocja
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Usuń</h1>
+
+<h3>Jesteś pewny że chcesz usunąć?</h3>
+<div>
+    <h4>Promocja</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tytul)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tytul)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tresc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tresc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ikona)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ikona)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Usuń
+        </button>
+        <a asp-action="Index" class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left-circle"></i> Powrót
+        </a>
+    </form>
+</div>

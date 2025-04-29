@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AutoFix.PortalWWW.Controllers
 {
-    public class PortalController : Controller
+    public class PortalController : BaseController
     {
         private readonly AutoFixContext _context;
 
-        public PortalController(AutoFixContext context)
+        public PortalController(AutoFixContext context) : base(context)
         {
             _context = context;
         }

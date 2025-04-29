@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edytuj</h1>
 
 <h4>Strona</h4>
 <hr />
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Tresc" class="control-label"></label>
-                <input asp-for="Tresc" class="form-control" />
+                <textarea asp-for="Tresc" class="form-control" rows="10"></textarea>
                 <span asp-validation-for="Tresc" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,14 +34,51 @@
                 <span asp-validation-for="Pozycja" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="LinkBezposredni" class="control-label"></label>
+                <input asp-for="LinkBezposredni" class="form-control" />
+                <span asp-validation-for="LinkBezposredni" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Podtytul" class="form-label"></label>
+                <input asp-for="Podtytul" class="form-control" />
+                <span asp-validation-for="Podtytul" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Ikona" class="form-label"></label>
+                <input asp-for="Ikona" class="form-control" />
+                <span asp-validation-for="Ikona" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CtaTytul" class="form-label"></label>
+                <input asp-for="CtaTytul" class="form-control" />
+                <span asp-validation-for="CtaTytul" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CtaOpis" class="form-label"></label>
+                <textarea asp-for="CtaOpis" class="form-control"></textarea>
+                <span asp-validation-for="CtaOpis" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CtaLink" class="form-label"></label>
+                <input asp-for="CtaLink" class="form-control" />
+                <span asp-validation-for="CtaLink" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CtaPrzycisk" class="form-label"></label>
+                <input asp-for="CtaPrzycisk" class="form-control" />
+                <span asp-validation-for="CtaPrzycisk" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex mt-3 gap-2">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-save"></i> Zapisz
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-left-circle"></i> Powrót
+                </a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

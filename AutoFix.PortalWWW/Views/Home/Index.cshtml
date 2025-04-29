@@ -1,4 +1,6 @@
-﻿@{
+﻿@model AutoFix.PortalWWW.Models.ViewModels.HomeVM
+
+@{
     ViewData["Title"] = "Strona główna";
 }
 
@@ -15,24 +17,16 @@
 <section class="container mb-5">
     <h2 class="text-center mb-4">Aktualne promocje</h2>
     <div class="row g-4">
-        <div class="col-md-4">
-            <div class="alert shadow-sm" style="background-color: #e0f0ff;">
-                <i class="bi bi-snow2 me-2"></i><strong>Przegląd klimatyzacji – tylko 50 zł!</strong><br />
-                Skorzystaj przed sezonem upałów.
+        @foreach (var promocja in Model.Promocje)
+        {
+            <div class="col-md-4">
+                <div class="alert shadow-sm" style="background-color: #e0f0ff;">
+                    <i class="bi @promocja.Ikona me-2"></i>
+                    <strong>@promocja.Tytul</strong><br />
+                    @promocja.Tresc
+                </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="alert shadow-sm" style="background-color: #e0f0ff;">
-                <i class="bi bi-truck-front me-2"></i><strong>Promocja wiosenna:</strong><br />
-                Sprawdzimy 34 punkty Twojego auta – gratis!
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="alert shadow-sm" style="background-color: #e0f0ff;">
-                <i class="bi bi-bag-check me-2"></i><strong>Wymiana opon zakupionych u nas – gratis</strong><br />
-                Tylko do końca miesiąca!
-            </div>
-        </div>
+        }
     </div>
 </section>
 
@@ -40,57 +34,19 @@
 <section class="container mb-5">
     <h2 class="text-center mb-4">Nasze usługi</h2>
     <div class="row g-4">
-        <!-- Rząd 1 -->
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-wrench-adjustable me-2"></i>Obsługa serwisowa</h5>
-                    <p class="card-text">Regularne przeglądy, wymiany oleju i filtra – dbamy o Twoje auto kompleksowo.</p>
+        @foreach (var usluga in Model.Uslugi)
+        {
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi @usluga.Ikona me-2"></i>@usluga.Tytul
+                        </h5>
+                        <p class="card-text">@usluga.Opis</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-cpu me-2"></i>Diagnostyka komputerowa</h5>
-                    <p class="card-text">Nowoczesne narzędzia do szybkiego wykrywania usterek.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-gear-wide-connected me-2"></i>Wymiana rozrządu</h5>
-                    <p class="card-text">Kompleksowa wymiana rozrządu – szybko, sprawnie i z gwarancją.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Rząd 2 -->
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-circle-half me-2"></i>Wulkanizacja</h5>
-                    <p class="card-text">Wymiana opon, wyważanie, serwis sezonowy – w 30 minut.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-exclamation-triangle me-2"></i>Hamulce</h5>
-                    <p class="card-text">Wymiana klocków, tarcz, przegląd układu hamulcowego – dla Twojego bezpieczeństwa.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm border-0">
-                <div class="card-body">
-                    <h5 class="card-title"><i class="bi bi-snow me-2"></i>Klimatyzacja</h5>
-                    <p class="card-text">Serwis i napełnianie klimatyzacji – chłodno i bezpiecznie przez całe lato.</p>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </section>
 

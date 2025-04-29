@@ -52,6 +52,31 @@ namespace AutoFix.Data.Migrations
                     b.ToTable("Aktualnosci");
                 });
 
+            modelBuilder.Entity("AutoFix.Data.Data.CMS.Promocja", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Ikona")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tresc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tytul")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Promocje");
+                });
+
             modelBuilder.Entity("AutoFix.Data.Data.CMS.Strona", b =>
                 {
                     b.Property<int>("IdStrony")
@@ -60,10 +85,38 @@ namespace AutoFix.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdStrony"));
 
+                    b.Property<string>("CtaLink")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("CtaOpis")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("CtaPrzycisk")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("CtaTytul")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Ikona")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("LinkBezposredni")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("LinkTytul")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Podtytul")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("Pozycja")
                         .HasColumnType("int");
@@ -80,6 +133,31 @@ namespace AutoFix.Data.Migrations
                     b.HasKey("IdStrony");
 
                     b.ToTable("Strony");
+                });
+
+            modelBuilder.Entity("AutoFix.Data.Data.CMS.Usluga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Ikona")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Opis")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tytul")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Uslugi");
                 });
 
             modelBuilder.Entity("AutoFix.Data.Data.Garaz.AutoZastepcze", b =>
@@ -287,6 +365,9 @@ namespace AutoFix.Data.Migrations
                     b.Property<int>("IdKlienta")
                         .HasColumnType("int");
 
+                    b.Property<int?>("IdMechanika")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdPojazdu")
                         .HasColumnType("int");
 
@@ -301,6 +382,8 @@ namespace AutoFix.Data.Migrations
                     b.HasKey("IdRezerwacji");
 
                     b.HasIndex("IdKlienta");
+
+                    b.HasIndex("IdMechanika");
 
                     b.HasIndex("IdPojazdu");
 
@@ -365,6 +448,11 @@ namespace AutoFix.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("AutoFix.Data.Data.Garaz.Mechanik", "Mechanik")
+                        .WithMany()
+                        .HasForeignKey("IdMechanika")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("AutoFix.Data.Data.Garaz.Pojazd", "Pojazd")
                         .WithMany()
                         .HasForeignKey("IdPojazdu")
@@ -372,6 +460,8 @@ namespace AutoFix.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Klient");
+
+                    b.Navigation("Mechanik");
 
                     b.Navigation("Pojazd");
                 });

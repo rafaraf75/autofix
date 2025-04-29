@@ -1,0 +1,54 @@
+﻿@model AutoFix.Data.Data.CMS.Strona
+
+@{
+    ViewData["Title"] = Model.Tytul;
+}
+
+<!-- HERO -->
+<section class="bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-5 fw-bold">@Model.Tytul</h1>
+        @if (!string.IsNullOrWhiteSpace(Model.Podtytul))
+        {
+            <p class="lead">@Model.Podtytul</p>
+        }
+    </div>
+</section>
+
+<!-- TREŚĆ STRONY -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="bg-white p-5 rounded shadow-sm mb-5 text-start">
+                @Html.Raw(Model.Tresc)
+            </div>
+
+            @* CTA jeśli wypełnione *@
+            @if (!string.IsNullOrWhiteSpace(Model.CtaTytul) || !string.IsNullOrWhiteSpace(Model.CtaOpis))
+            {
+                <div class="bg-light p-5 rounded shadow-sm text-center">
+                    @if (!string.IsNullOrWhiteSpace(Model.CtaTytul))
+                    {
+                        <h4 class="mb-3">
+                            @if (!string.IsNullOrWhiteSpace(Model.Ikona))
+                            {
+                                <i class="bi @Model.Ikona me-2"></i>
+                            }
+                            @Model.CtaTytul
+                        </h4>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.CtaOpis))
+                    {
+                        <p>@Model.CtaOpis</p>
+                    }
+
+                    @if (!string.IsNullOrWhiteSpace(Model.CtaLink) && !string.IsNullOrWhiteSpace(Model.CtaPrzycisk))
+                    {
+                        <a href="@Model.CtaLink" class="btn btn-primary btn-lg mt-3">@Model.CtaPrzycisk</a>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

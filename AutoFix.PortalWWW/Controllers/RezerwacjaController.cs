@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AutoFix.PortalWWW.Controllers
 {
-    public class RezerwacjaController : Controller
+    public class RezerwacjaController : BaseController
     {
         private readonly AutoFixContext _context;
 
-        public RezerwacjaController(AutoFixContext context)
+        public RezerwacjaController(AutoFixContext context) : base(context)
         {
             _context = context;
         }

@@ -19,7 +19,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                @* <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Strona główna</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="OpisFirmy">O nas</a></li>
@@ -28,7 +28,9 @@
                         <li class="nav-item"><a class="nav-link" asp-controller="Portal" asp-action="DodajKlientaPojazd">Dodaj klienta/pojazd</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">Polityka prywatności</a></li>
                     </ul>
-                </div>
+                </div> *@
+                @await Html.PartialAsync("Odnosniki",
+                (IEnumerable<AutoFix.Data.Data.CMS.Strona>)ViewBag.ModelStrony)
             </div>
         </nav>
     </header>
@@ -37,10 +39,13 @@
     <main class="flex-fill py-4 bg-light">
         @RenderBody()
     </main>
+    <hr/>
 
+    @await Html.PartialAsync("Aktualnosci",
+            (IEnumerable<AutoFix.Data.Data.CMS.Aktualnosc>)ViewBag.ModelAktualnosci)
     <!-- FOOTER -->
     <footer class="bg-dark text-white text-center py-3 fixed-bottom">
-        &copy; 2025 AutoFix | ul. Serwisowa 123, Warszawa | tel. 123-456-789
+        &copy; 2025 AutoFix | ul. Rajdowa 123, Wrocław | tel. 123-456-789
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

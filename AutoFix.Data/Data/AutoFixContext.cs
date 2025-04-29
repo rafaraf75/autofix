@@ -15,6 +15,8 @@ namespace AutoFix.Data
         // CMS
         public DbSet<Aktualnosc> Aktualnosci { get; set; }
         public DbSet<Strona> Strony { get; set; }
+        public DbSet<Promocja> Promocje { get; set; }
+        public DbSet<Usluga> Uslugi { get; set; }
 
         // Garaz
         public DbSet<Klient> Klienci { get; set; }
@@ -39,6 +41,13 @@ namespace AutoFix.Data
                 .HasOne(r => r.Klient)
                 .WithMany()
                 .HasForeignKey(r => r.IdKlienta)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // relacja do mechanika
+            modelBuilder.Entity<Rezerwacja>()
+                .HasOne(r => r.Mechanik)
+                .WithMany()
+                .HasForeignKey(r => r.IdMechanika)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

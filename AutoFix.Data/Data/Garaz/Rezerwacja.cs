@@ -26,10 +26,16 @@ namespace AutoFix.Data.Data.Garaz
         public int IdKlienta { get; set; }
         public Klient? Klient { get; set; }
 
+        // Relacja: Rezerwacja przypisana do Pojazdu
         [ForeignKey("Pojazd")]
         [Display(Name = "Pojazd")]
         public int IdPojazdu { get; set; }
         public Pojazd? Pojazd { get; set; }
 
+        // Relacja: Rezerwacja przypisana do Mechanika (opcjonalna)
+        [ForeignKey("Mechanik")]
+        [Display(Name = "Mechanik")]
+        public int? IdMechanika { get; set; }
+        public Mechanik? Mechanik { get; set; }
     }
 }

@@ -1,0 +1,41 @@
+﻿@model AutoFix.Data.Data.CMS.Promocja
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+    <h4>Promocja</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tytul)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tytul)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tresc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tresc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ikona)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ikona)
+        </dd>
+    </dl>
+</div>
+<div class="form-group d-flex gap-2">
+    <button type="submit" class="btn btn-success">
+        <i class="bi bi-save"></i> Zapisz
+    </button>
+
+    <a asp-action="Index" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left-circle"></i> Powrót
+    </a>
+</div>
