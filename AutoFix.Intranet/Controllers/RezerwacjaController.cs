@@ -243,8 +243,7 @@ namespace AutoFix.Intranet.Controllers
             _context.Naprawy.Add(naprawa);
             await _context.SaveChangesAsync();
 
-            TempData["Sukces"] = "Rezerwacja została przekazana do naprawy.";
-            return RedirectToAction("Index", "Naprawa");
+            return RedirectToAction("Drukuj", "Naprawa", new { id = naprawa.IdNaprawy });
         }
     }
 }

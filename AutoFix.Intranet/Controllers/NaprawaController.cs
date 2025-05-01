@@ -166,5 +166,46 @@ namespace AutoFix.Intranet.Controllers
         {
             return _context.Naprawy.Any(e => e.IdNaprawy == id);
         }
+
+        public IActionResult Drukuj(int id)
+        {
+            var naprawa = _context.Naprawy
+                .Include(n => n.Mechanik)
+                .Include(n => n.Pojazd)
+                .FirstOrDefault(n => n.IdNaprawy == id);
+
+            if (naprawa == null)
+                return NotFound();
+
+            return View("Drukuj", naprawa);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Zakoncz(int id)
+        {
+            var naprawa = await _context.Naprawy
+                .Include(n => n.Pojazd)
+                .FirstOrDefaultAsync(n => n.IdNaprawy == id);
+
+            if (naprawa == null)
+                return NotFound();
+
+            // Zapisz do historii
+            var historia = new HistoriaNaprawy
+            {
+                DataZmiany = DateTime.Now,
+                OpisZmiany = $"Naprawa zakończona: {naprawa.Opis}",
+                IdNaprawy = naprawa.IdNaprawy
+            };
+            _context.HistorieNapraw.Add(historia);
+
+            // Usuń naprawę z aktywnych
+            _context.Naprawy.Remove(naprawa);
+
+            await _context.SaveChangesAsync();
+            TempData["Sukces"] = "Naprawa została zakończona i przeniesiona do historii.";
+
+            return RedirectToAction("Index");
+        }
     }
 }

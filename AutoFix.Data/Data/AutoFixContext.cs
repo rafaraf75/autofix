@@ -49,6 +49,13 @@ namespace AutoFix.Data
                 .WithMany()
                 .HasForeignKey(r => r.IdMechanika)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<HistoriaNaprawy>()
+                .HasOne(h => h.Naprawa)
+                .WithMany()
+                .HasForeignKey(h => h.IdNaprawy)
+                .OnDelete(DeleteBehavior.SetNull);
+
         }
     }
 }

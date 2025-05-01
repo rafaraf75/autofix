@@ -67,7 +67,11 @@
                     <a asp-action="Delete" asp-route-id="@item.IdNaprawy" class="btn btn-sm btn-outline-danger">
                         <i class="bi bi-trash"></i>
                     </a>
-
+                    <form asp-action="Zakoncz" asp-route-id="@item.IdNaprawy" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-outline-success">
+                            <i class="bi bi-check-circle"></i>
+                        </button>
+                    </form>
             </td>
         </tr>
 }
