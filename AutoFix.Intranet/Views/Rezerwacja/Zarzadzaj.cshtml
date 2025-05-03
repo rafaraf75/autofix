@@ -1,17 +1,25 @@
 ﻿@model AutoFix.Data.Data.Garaz.Rezerwacja
 
-<h2>Zarządzaj rezerwacją</h2>
+@* <h2>Zarządzaj rezerwacją</h2> *@
 
 <form asp-action="Zarzadzaj" method="post" class="container mt-4" style="max-width: 800px;">
     <input type="hidden" asp-for="IdRezerwacji" />
 
     <h2 class="mb-4">Zarządzaj rezerwacją</h2>
 
-    <div class="row mb-3">
-        <div class="col-md-6">
+    <div class="row mb-3 align-items-end">
+        <div class="col-md-4">
             <label asp-for="DataRezerwacji" class="form-label">Data rezerwacji</label>
             <input asp-for="DataRezerwacji" class="form-control" type="datetime-local" />
         </div>
+
+        <div class="col-md-2 d-flex align-items-center pt-4">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="autoZastepcze" name="autoZastepcze" />
+                <label class="form-check-label ms-1" for="autoZastepcze">Auto zastępcze</label>
+            </div>
+        </div>
+
         <div class="col-md-6">
             <label class="form-label">Mechanik</label>
             <select asp-for="IdMechanika" class="form-select" asp-items="ViewBag.Mechanicy">
@@ -19,6 +27,7 @@
             </select>
         </div>
     </div>
+
 
     <div class="mb-3">
         <label asp-for="Usluga" class="form-label">Usługa</label>
@@ -31,8 +40,13 @@
     </div>
 
     <div class="d-flex justify-content-start">
-        <button type="submit" class="btn btn-primary">Drukuj zlecenie</button>
-        <a asp-action="RezerwacjaDashboard" class="btn btn-secondary ms-2">Anuluj</a>
+        <button type="submit" class="btn btn-primary me-2">
+            <i class="bi bi-printer me-1"></i> Drukuj zlecenie
+        </button>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">
+            <i class="bi bi-arrow-left me-1"></i> Wróć do listy
+        </a>
     </div>
+
 </form>
 

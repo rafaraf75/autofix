@@ -209,6 +209,7 @@ namespace AutoFix.Intranet.Controllers
 
             return View(rezerwacja);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Zarzadzaj(int id, [Bind("IdRezerwacji,DataRezerwacji,Usluga,Uwagi,IdMechanika")] Rezerwacja model)
@@ -223,6 +224,9 @@ namespace AutoFix.Intranet.Controllers
             if (rezerwacja == null || rezerwacja.Pojazd == null)
                 return NotFound();
 
+            // Odczyt checkboxa z formularza
+            var autoZastepczeWybrane = Request.Form["autoZastepcze"] == "on";
+
             // Aktualizuj dane rezerwacji
             rezerwacja.DataRezerwacji = model.DataRezerwacji;
             rezerwacja.Usluga = model.Usluga;
@@ -236,12 +240,26 @@ namespace AutoFix.Intranet.Controllers
                 Opis = model.Usluga,
                 IdPojazdu = rezerwacja.Pojazd.IdPojazdu,
                 IdMechanika = model.IdMechanika,
-                AutoZastepcze = false,
+                AutoZastepcze = autoZastepczeWybrane,
                 Status = "Przyjęta"
             };
 
             _context.Naprawy.Add(naprawa);
             await _context.SaveChangesAsync();
+
+            if (naprawa.AutoZastepcze)
+            {
+                var auto = new AutoZastepcze
+                {
+                    IdNaprawy = naprawa.IdNaprawy,
+                    DataOd = naprawa.DataPrzyjecia,
+                    Koszt = 100,
+                    OpisNaprawy = naprawa.Opis
+                };
+
+                _context.AutaZastepcze.Add(auto);
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToAction("Drukuj", "Naprawa", new { id = naprawa.IdNaprawy });
         }

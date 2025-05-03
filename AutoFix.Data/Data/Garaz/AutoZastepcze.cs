@@ -23,7 +23,11 @@ namespace AutoFix.Data.Data.Garaz
         // Relacja: Auto zastępcze powiązane z konkretną naprawą
         [ForeignKey("Naprawa")]
         [Display(Name = "Powiązana naprawa")]
-        public int IdNaprawy { get; set; }
+        public int? IdNaprawy { get; set; }
         public Naprawa? Naprawa { get; set; }
+
+        [Display(Name = "Opis naprawy")]
+        public string? OpisNaprawy { get; set; }
+
     }
 }

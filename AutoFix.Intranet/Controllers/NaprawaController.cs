@@ -190,16 +190,31 @@ namespace AutoFix.Intranet.Controllers
             if (naprawa == null)
                 return NotFound();
 
-            // Zapisz do historii
+            // 1. Zapisz historię
             var historia = new HistoriaNaprawy
             {
                 DataZmiany = DateTime.Now,
                 OpisZmiany = $"Naprawa zakończona: {naprawa.Opis}",
-                IdNaprawy = naprawa.IdNaprawy
+                IdNaprawy = naprawa.IdNaprawy,
+                OpisNaprawy = naprawa.Opis
             };
             _context.HistorieNapraw.Add(historia);
 
-            // Usuń naprawę z aktywnych
+            // 2. Zaktualizuj auto zastępcze jeśli istnieje
+            if (naprawa.AutoZastepcze)
+            {
+                var auto = await _context.AutaZastepcze
+                    .FirstOrDefaultAsync(a => a.IdNaprawy == naprawa.IdNaprawy);
+
+                if (auto != null)
+                {
+                    auto.DataDo = DateTime.Now;
+                    auto.OpisNaprawy = naprawa.Opis;
+                    auto.IdNaprawy = null;
+                }
+            }
+
+            // 3. Usuń naprawę
             _context.Naprawy.Remove(naprawa);
 
             await _context.SaveChangesAsync();

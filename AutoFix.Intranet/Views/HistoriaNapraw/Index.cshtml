@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.OpisZmiany)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Naprawa.Opis)
+                @(item.OpisNaprawy ?? item.Naprawa?.Opis ?? "—")
             </td>
             <td>
                     <a asp-action="Edit" asp-route-id="@item.IdHistorii" class="btn btn-sm btn-outline-warning me-1">

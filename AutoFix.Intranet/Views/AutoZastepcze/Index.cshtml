@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.Koszt)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Naprawa.Opis)
+                @(item.OpisNaprawy ?? item.Naprawa?.Opis ?? "—")
             </td>
             <td>
                     <a asp-action="Edit" asp-route-id="@item.IdAutoZastepczego" class="btn btn-sm btn-outline-warning me-1">

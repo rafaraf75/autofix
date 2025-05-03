@@ -23,5 +23,8 @@ namespace AutoFix.Data.Data.Garaz
         [Display(Name = "Powiązana naprawa")]
         public int? IdNaprawy { get; set; }
         public Naprawa? Naprawa { get; set; }
+        [Display(Name = "Opis naprawy")]
+        public string? OpisNaprawy { get; set; }
+
     }
 }
