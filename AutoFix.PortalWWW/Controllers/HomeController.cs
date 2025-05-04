@@ -26,21 +26,6 @@ namespace AutoFix.PortalWWW.Controllers
             return View(vm);
         }
 
-        public IActionResult OpisFirmy()
-        {
-            return View();
-        }
-
-        public IActionResult HistoriaFirmy()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

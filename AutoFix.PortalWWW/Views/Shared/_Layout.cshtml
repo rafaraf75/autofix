@@ -19,16 +19,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                @* <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Strona główna</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="OpisFirmy">O nas</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="HistoriaFirmy">Historia</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Rezerwacja" asp-action="Create">Rezerwacja</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Portal" asp-action="DodajKlientaPojazd">Dodaj klienta/pojazd</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Privacy">Polityka prywatności</a></li>
-                    </ul>
-                </div> *@
+                
                 @await Html.PartialAsync("Odnosniki",
                 (IEnumerable<AutoFix.Data.Data.CMS.Strona>)ViewBag.ModelStrony)
             </div>
